@@ -112,6 +112,7 @@ document.getElementById('booksearch').addEventListener('click',()=>{
 document.getElementById('allchar').addEventListener('click',()=>{
     document.getElementById('text').style.display="none";
     document.getElementById('detail').style.display="none";
+    document.getElementById('char_rec').style.display="none";
     document.getElementById('char_records').style.display="block";
     document.getElementById('per_page').style.display='none';
     
