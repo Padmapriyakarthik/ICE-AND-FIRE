@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<style>
+  body{
+    background-size: cover;
+    background-position: center;
+  /*  background-repeat: no-repeat, repeat;*/
+    color:solid whitesmoke;
+    background-image: linear-gradient(to right,rgb(82, 175, 163) 0%,rgb(61, 139, 80) 100%),url('https://pm1.narvii.com/6149/2b887c96393bffe1f5d506a7c2b0725dd36fe266_hq.jpg');
+    background-blend-mode:  screen, difference, lighten;;
+  }
+    caption{
+        caption-side: top;
+        font-size: 21px;
+        font-weight: normal;
+        color: purple;
+    }
+    #povcharacters{
+      caption-side: top;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+font-size: 21px;
+letter-spacing: 2px;
+word-spacing: 2px;
+color: #000000;
+font-weight: normal;
+text-decoration: underline solid rgb(68, 68, 68);
+font-style: italic;
+font-variant: small-caps;
+text-transform: none;
+text-align: center;
+    }
+    tbody{
+      font-weight: bold;
+      font-size: 18px;
+      color: black;
+    }
+    thead{
+      font-style: italic;
+font-variant: normal;
+text-transform: uppercase;
+font-size: 20px;
+
+    }
+    .layout{          
+                
+                width: 100px;
+                height:200px;
+                border: 1px solid green;
+                border-radius: 25px;
+                background: rgb(34,193,195);
+          }
+          p{
+            font-family: "Lucida Console", Monaco, monospace;
+font-size: 27px;
+letter-spacing: 0px;
+word-spacing: 1.2px;
+color: #000000;
+font-weight: 700;
+text-decoration: none solid rgb(68, 68, 68);
+font-style: italic;
+font-variant: normal;
+text-transform: none;
+          }
+        #allchar{
+          font-size: 25px;
+          color:black;
+          text-decoration: underline solid rgb(68, 68, 68);
+          font-style: italic;
+        }
+        #heading{
+          font-family: Impact, Charcoal, sans-serif;
+font-size: 27px;
+letter-spacing: 0px;
+word-spacing: 1.2px;
+color: #000000;
+font-weight: 400;
+text-decoration: none solid rgb(68, 68, 68);
+font-style: italic;
+font-variant: normal;
+text-transform: uppercase;
+        }
+        
+</style>
+</head>
+<body>
+        <div class="container p-2">
+            <nav class="navbar navbar-expand-lg navbar-light ">
+                <span id="heading">GAME OF THRONES</span>
+                <button type="button" class="btn btn-link" id="allchar">All Charatcers</button>
+                  <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search BOOKS"  id="book" list="books">
+                    <datalist id="books"></datalist>
+                    <button class="btn btn-success my-2 my-sm-0" type="button" id="booksearch">Search</button>
+                  </form>
+                
+            </nav>
+            <div class="row p-3">
+              <div class=" offset-2 col-sm-4 col-md-3 col-lg-6" id="char_records" style="display: none;">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="records">Number of Characters Per Page</label>
+                  </div>
+                  <select class="custom-select" id="records">
+                    <option selected>Choose...</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                  </select>
+                </div>
+              </div>
+              <div class="offset-2 col-sm-4 col-md-3 col-lg-6" id="per_page" style="display: none;">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="per_page">choose given pagenumber</label>
+                    <input type="number" class="form-control" id="perpage" placeholder="pagenumber" min="1">
+                  </div>                 
+                  <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" id="page">View Characters</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row p-3">
+              <div class="offset-2  col-10">
+                <table class="table table-hover table-striped p-2" style="display: none;" id="char_rec">
+                  <thead>
+                    <tr>
+                      <th scope="col">Character Name</th>
+                      <th scope="col">Gender</th>
+                      <th scope="col">PlayedBy</th>
+                      <th scope="col">Character Title</th>
+                      <th scope="col">Book Name</th>
+                    </tr>
+                  </thead>
+                  <tbody id="char_det">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row p-3">
+              <div class="offset-3 col-6 layout" style="display: none;" id="text">
+              </div>
+            </div>
+        </div>
+            <table class="table table-hover table-striped p-2" style="display: none;" id="detail">
+              <caption id="povcharacters"></caption>
+                <caption id="bookdetails"></caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Character Name</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">PlayedBy</th>
+                    <th scope="col">Character Title</th>
+                    <th scope="col">AliasName</th>
+                    <th scope="col">House_Name</th>
+                    <th scope="col">Region</th>
+                    <th scope="col">Ancestoral Weapons</th>
+                  </tr>
+                </thead>
+                <tbody id="characterdetails">
+                </tbody>
+              </table>
+            
+    <script src="script.js"></script>
+</body>
+</html>
